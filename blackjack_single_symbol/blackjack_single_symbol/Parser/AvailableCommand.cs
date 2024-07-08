@@ -9,5 +9,5 @@ namespace blackjack_single_symbol.Parser{
         YES,
         UNKNOWN,
         HELP
-}
+    }
 }

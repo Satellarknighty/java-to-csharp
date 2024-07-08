@@ -47,6 +47,14 @@ namespace blackjack_single_symbol.Parser
             }
             Console.WriteLine();
         }
+
+        public void DisplayHelpQuitCommands(){
+            Console.Write("Available commands are:");
+            foreach(string key in validQuitCommands.Keys){
+                Console.Write($" {key}");
+            }
+            Console.WriteLine();
+        }
     }
 }
     
