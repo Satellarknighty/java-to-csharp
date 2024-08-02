@@ -6,7 +6,6 @@ namespace blackjack_single_symbol.Object
     public class Deck
     {
         private readonly LinkedList<Card> cards;
-        public LinkedList<Card> Cards {get;}
         static readonly Random random = new();
 
         public Deck(){
@@ -44,6 +43,8 @@ namespace blackjack_single_symbol.Object
             int randomTime = (int)random.NextInt64(100);
             randomTime.Times(() => Cut());
         }
-    
+        public LinkedList<Card> Cards(){
+            return cards;
+        }
     }
 }
