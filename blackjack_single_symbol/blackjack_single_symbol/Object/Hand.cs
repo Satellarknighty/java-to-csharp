@@ -10,7 +10,7 @@ namespace blackjack_single_symbol.Object
         public int TotalValue{ get; private set; }
         public LinkedList<Card> Cards {get;}
         public bool IsBusted{ get; private set; }
-        static readonly int LIMIT_BEFORE_BUST = 21;
+        private protected static readonly int LIMIT_BEFORE_BUST = 21;
 
         public Hand(){
             TotalValue = 0;

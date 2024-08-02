@@ -20,5 +20,11 @@ namespace blackjack_single_symbol.Util
             list.RemoveLast();
             return element;
         }
+
+        public static IEnumerable<E> DescendingIterator<E>(this LinkedList<E> list){
+            for (LinkedListNode<E>? node = list.Last; node is not null; node = node.Previous){
+                yield return node.Value;
+            }
+        }
     }
 }

@@ -1,3 +1,4 @@
+using blackjack_single_symbol.Exception;
 using blackjack_single_symbol.Util;
 using static blackjack_single_symbol.Util.LoopUtil;
 
@@ -6,7 +7,7 @@ namespace blackjack_single_symbol.Object
     public class Deck
     {
         private readonly LinkedList<Card> cards;
-        static readonly Random random = new();
+        private static readonly Random random = new();
 
         public Deck(){
             cards = new LinkedList<Card>();
@@ -33,9 +34,9 @@ namespace blackjack_single_symbol.Object
         private void Cut(int topHalf)
         {
             LinkedList<Card> bottomHalf = new();
-            topHalf.Times(() => bottomHalf.AddFirst(cards.PollFirst()));
+            topHalf.Times(() => bottomHalf.AddFirst(cards.PollFirst() ?? throw new DeckEmptyException()));
             while (bottomHalf.Count > 0){
-                cards.AddLast(bottomHalf.PollFirst());
+                cards.AddLast(bottomHalf.PollFirst() ?? throw new DeckEmptyException("The bottom half is already exhausted. Check for error in implementation."));
             }
         }
 
