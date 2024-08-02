@@ -6,6 +6,7 @@ namespace blackjack_single_symbol.Object
     public class Deck
     {
         private readonly LinkedList<Card> cards;
+        public LinkedList<Card> Cards {get;}
         static readonly Random random = new();
 
         public Deck(){
@@ -14,8 +15,8 @@ namespace blackjack_single_symbol.Object
                 cards.AddFirst(new Card(value));
             }
         }
-        public Card Draw(){
-            return cards.First();
+        public Card? Draw(){
+            return cards.PollFirst();
         }
 
         public void ReturnToTop(Card card){
@@ -33,7 +34,16 @@ namespace blackjack_single_symbol.Object
         private void Cut(int topHalf)
         {
             LinkedList<Card> bottomHalf = new();
-            10.Times(() => bottomHalf.AddFirst(cards.First()));
+            topHalf.Times(() => bottomHalf.AddFirst(cards.PollFirst()));
+            while (bottomHalf.Count > 0){
+                cards.AddLast(bottomHalf.PollFirst());
+            }
         }
+
+        public void Shuffle(){
+            int randomTime = (int)random.NextInt64(100);
+            randomTime.Times(() => Cut());
+        }
+    
     }
 }
