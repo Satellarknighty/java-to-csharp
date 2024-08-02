@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace blackjack_single_symbol.Exception
 {
     public class CardEmptyException : System.Exception
