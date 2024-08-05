@@ -1,4 +1,5 @@
 
+using System.Runtime.CompilerServices;
 using System.Text;
 using blackjack_single_symbol.Exception;
 using blackjack_single_symbol.Util;
@@ -16,9 +17,9 @@ namespace blackjack_single_symbol.Object
         public override string ToString()
         {
             StringBuilder builder = new();
-            Card firstCard = Cards.PollFirst() ?? throw new CardEmptyException();
+            Card firstCard = Cards.First() ?? throw new CardEmptyException();
             builder.Append(firstCard);
-            Cards.Count.Times(() => builder.Append("[X]"));
+            (Cards.Count - 1).Times(() => builder.Append("[X]"));
             builder.Append($"\t Value: {firstCard.Value} + ?");
             return builder.ToString();
         }
