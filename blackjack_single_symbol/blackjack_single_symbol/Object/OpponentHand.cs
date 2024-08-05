@@ -34,9 +34,11 @@ namespace blackjack_single_symbol.Object
                 float probability = CalculateProbability(opposingHand, deck);
                 if (random.NextInt64(1,11) <= probability){
                     Draw(deck);
+                    Console.WriteLine("Opponent hit!");
                 }
                 else{
                     HasStayed = true;
+                    Console.WriteLine("Opponent stayed!");
                 }
             }
         }

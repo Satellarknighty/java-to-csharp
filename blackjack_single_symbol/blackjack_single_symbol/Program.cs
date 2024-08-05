@@ -1,7 +1,7 @@
 ﻿namespace blackjack_single_symbol{
     class Program{
         static void Main(){
-            Console.WriteLine("hello");
+            SinglePlayer.StartGame();
         }
     }
 }
